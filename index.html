@@ -1,0 +1,3814 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beauty Shop — Your Ultimate Beauty & Cosmetics Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Jost:wght@300;400;500;600&family=Alex+Brush&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ============ TOKENS ============ */
+      :root {
+        --green-900: #16311a;
+        --green-800: #1b3f20;
+        --green-700: #234f2a;
+        --green-100: #e7efe4;
+        --gold-600: #c99b4e;
+        --gold-700: #b98a3d;
+        --gold-100: #f6ecd9;
+        --cream: #f7f6f2;
+        --white: #ffffff;
+        --ink: #1c2019;
+        --ink-soft: #5c6259;
+        --line: #eceae4;
+        --radius-lg: 20px;
+        --radius-md: 14px;
+        --radius-sm: 10px;
+        --shadow-card: 0 10px 30px rgba(27, 63, 32, 0.08);
+        --shadow-soft: 0 4px 18px rgba(27, 63, 32, 0.06);
+        --maxw: 1240px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Jost", sans-serif;
+        color: var(--ink);
+        background: var(--white);
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+      }
+      button {
+        font-family: inherit;
+        cursor: pointer;
+        border: none;
+        background: none;
+      }
+      input {
+        font-family: inherit;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Poppins", sans-serif;
+        color: var(--ink);
+        line-height: 1.2;
+      }
+      .container {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .gold {
+        color: var(--gold-700);
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: "Jost", sans-serif;
+        font-size: 14px;
+        letter-spacing: 0.03em;
+        color: var(--green-800);
+        text-transform: capitalize;
+        margin-bottom: 10px;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 16px;
+        height: 2px;
+        background: var(--gold-600);
+        display: inline-block;
+      }
+      .section-head {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      .section-head.left {
+        text-align: left;
+      }
+      .section-head h2 {
+        font-size: clamp(26px, 3.2vw, 38px);
+        font-weight: 700;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 26px;
+        border-radius: 999px;
+        font-size: 15px;
+        font-weight: 500;
+        transition: all 0.25s ease;
+        white-space: nowrap;
+      }
+      .btn-primary {
+        background: var(--green-800);
+        color: #fff;
+      }
+      .btn-primary:hover {
+        background: var(--green-900);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(27, 63, 32, 0.25);
+      }
+      .btn-outline {
+        background: transparent;
+        color: var(--green-800);
+        border: 1.5px solid var(--green-800);
+      }
+      .btn-outline:hover {
+        background: var(--green-800);
+        color: #fff;
+      }
+      .btn-white {
+        background: #fff;
+        color: var(--green-800);
+      }
+      .btn-white:hover {
+        background: var(--gold-600);
+        color: #fff;
+      }
+      .btn svg {
+        transition: transform 0.25s ease;
+      }
+      .btn:hover svg {
+        transform: translateX(3px);
+      }
+
+      /* ============ TOP BAR ============ */
+      .topbar {
+        background: var(--green-800);
+        color: #fff;
+        font-size: 13px;
+        padding: 9px 0;
+      }
+      .topbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .topbar-left {
+        display: flex;
+        gap: 22px;
+        align-items: center;
+        opacity: 0.95;
+      }
+      .topbar-right {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+      .topbar a.signup {
+        color: var(--gold-600);
+        text-decoration: underline;
+        font-weight: 500;
+      }
+      .topbar .socials {
+        display: flex;
+        gap: 12px;
+      }
+      .topbar .socials a {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.2s;
+      }
+      .topbar .socials a:hover {
+        background: var(--gold-600);
+      }
+      .topbar .socials svg {
+        width: 12px;
+        height: 12px;
+        fill: #fff;
+      }
+
+      /* ============ HEADER ============ */
+      header.main-nav {
+        background: #fff;
+        padding: 16px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 14px rgba(0, 0, 0, 0.04);
+      }
+      .nav-flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+      }
+      .logo .mark {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: var(--green-800);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 16px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 32px;
+        font-size: 15px;
+        font-weight: 500;
+      }
+      .nav-links a {
+        position: relative;
+        padding: 4px 0;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--green-800);
+      }
+      .nav-links a.active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 100%;
+        height: 2px;
+        background: var(--gold-600);
+      }
+      .nav-icons {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+      .nav-icons button {
+        width: 20px;
+        height: 20px;
+        color: var(--ink);
+      }
+      .nav-icons svg {
+        width: 20px;
+        height: 20px;
+        stroke: var(--ink);
+      }
+      .burger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        width: 26px;
+      }
+      .burger span {
+        height: 2px;
+        background: var(--ink);
+        border-radius: 2px;
+      }
+
+      /* ============ HERO ============ */
+      .hero {
+        background: var(--cream);
+        position: relative;
+        overflow: hidden;
+        padding: 60px 0 0;
+      }
+      .hero .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+      }
+      .hero-copy .eyebrow-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #fff;
+        padding: 9px 18px;
+        border-radius: 999px;
+        font-size: 14px;
+        box-shadow: var(--shadow-soft);
+        margin-bottom: 22px;
+      }
+      .hero-copy .eyebrow-pill .dot {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--gold-100);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .hero-copy .eyebrow-pill .dot svg {
+        width: 11px;
+        height: 11px;
+        fill: var(--gold-700);
+      }
+      .hero-copy h1 {
+        font-size: clamp(34px, 4.4vw, 54px);
+        font-weight: 700;
+        margin-bottom: 20px;
+        letter-spacing: -0.01em;
+      }
+      .hero-copy p {
+        color: var(--ink-soft);
+        font-size: 16px;
+        max-width: 440px;
+        margin-bottom: 32px;
+        line-height: 1.7;
+      }
+      .hero-ctas {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+      .hero-ctas .link-more {
+        font-weight: 500;
+        border-bottom: 1.5px solid var(--ink);
+        padding-bottom: 2px;
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+      }
+      .hero-visual {
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
+      .hero-blob {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 88%;
+        height: 92%;
+        background: linear-gradient(160deg, var(--green-100), #dcead9);
+        border-radius: 44% 56% 58% 42% / 48% 42% 58% 52%;
+        z-index: 0;
+      }
+      .hero-visual img.hero-model {
+        position: relative;
+        z-index: 1;
+        width: 88%;
+        border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+        object-fit: cover;
+        aspect-ratio: 4/5;
+      }
+      .floating-badge {
+        position: absolute;
+        background: #fff;
+        border-radius: 999px;
+        padding: 9px 16px 9px 9px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: var(--shadow-card);
+        font-size: 13px;
+        font-weight: 500;
+        z-index: 2;
+        animation: floaty 4s ease-in-out infinite;
+      }
+      .floating-badge .ic {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: var(--green-100);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .floating-badge .ic svg {
+        width: 13px;
+        height: 13px;
+        stroke: var(--green-800);
+      }
+      .badge-delivery {
+        top: 44%;
+        left: -4%;
+        animation-delay: 0.5s;
+      }
+      .badge-secure {
+        bottom: 14%;
+        right: 2%;
+        animation-delay: 1.2s;
+      }
+      .trust-seal {
+        position: absolute;
+        top: 2%;
+        right: 6%;
+        width: 74px;
+        height: 74px;
+        border-radius: 50%;
+        background: var(--gold-600);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-align: center;
+        font-size: 9px;
+        font-weight: 600;
+        line-height: 1.3;
+        box-shadow: var(--shadow-card);
+        z-index: 2;
+        border: 3px solid #fff;
+        animation: spin 14s linear infinite;
+      }
+      @keyframes floaty {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* ============ MARQUEE TICKER ============ */
+      .ticker {
+        background: var(--green-800);
+        overflow: hidden;
+        padding: 16px 0;
+        margin-top: 56px;
+      }
+      .ticker-track {
+        display: flex;
+        width: max-content;
+        animation: scroll-left 28s linear infinite;
+      }
+      .ticker-track span {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: #fff;
+        font-weight: 500;
+        font-size: 15px;
+        padding: 0 34px;
+        white-space: nowrap;
+      }
+      .ticker-track span svg {
+        width: 15px;
+        height: 15px;
+        fill: var(--gold-600);
+      }
+      @keyframes scroll-left {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* ============ CATEGORY GRID ============ */
+      .section {
+        padding: 80px 0;
+      }
+      .section.bg-cream {
+        background: var(--cream);
+      }
+      .cat-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 24px;
+      }
+      .cat-card {
+        text-align: center;
+      }
+      .cat-card .circle {
+        width: 100%;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-bottom: 16px;
+        background: var(--green-100);
+        position: relative;
+        transition: transform 0.3s ease;
+      }
+      .cat-card .circle img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+      .cat-card:hover .circle {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-card);
+      }
+      .cat-card:hover .circle img {
+        transform: scale(1.08);
+      }
+      .cat-card h4 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+      .cat-card span {
+        font-size: 13px;
+        color: var(--ink-soft);
+      }
+
+      /* ============ PROMO CARDS ============ */
+      .promo-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-top: 56px;
+      }
+      .promo-card {
+        position: relative;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        min-height: 260px;
+        display: flex;
+        align-items: center;
+        padding: 36px;
+        color: #fff;
+      }
+      .promo-card img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+      }
+      .promo-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          var(--green-900) 32%,
+          rgba(22, 49, 26, 0.55) 65%,
+          rgba(22, 49, 26, 0) 100%
+        );
+        z-index: 1;
+      }
+      .promo-card .content {
+        position: relative;
+        z-index: 2;
+        max-width: 70%;
+      }
+      .promo-tag {
+        display: inline-block;
+        background: var(--gold-600);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 6px 14px;
+        border-radius: 999px;
+        margin-bottom: 14px;
+      }
+      .promo-card h3 {
+        color: #fff;
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        line-height: 1.25;
+      }
+      .promo-card h3 .accent {
+        color: var(--gold-600);
+      }
+      .promo-card p {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+
+      /* ============ ABOUT ============ */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+      .about-collage {
+        position: relative;
+        padding: 20px 30px 30px 0;
+      }
+      .about-collage .frame {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 78%;
+        height: 82%;
+        border: 3px solid var(--green-800);
+        border-radius: 120px 20px 20px 20px;
+        z-index: 0;
+      }
+      .collage-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.9fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 14px;
+        position: relative;
+        z-index: 1;
+      }
+      .collage-grid img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 16px;
+      }
+      .collage-grid .c1 {
+        grid-row: 1/2;
+        border-radius: 80px 16px 16px 16px;
+        aspect-ratio: 1/1.05;
+      }
+      .collage-grid .c2 {
+        aspect-ratio: 1/1.3;
+      }
+      .collage-grid .c3 {
+        aspect-ratio: 1/1;
+      }
+      .collage-grid .c4 {
+        aspect-ratio: 1/1;
+        border-radius: 16px 16px 16px 60px;
+      }
+      .collage-seal {
+        position: absolute;
+        top: 47%;
+        left: 38%;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: var(--green-800);
+        border: 4px solid #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gold-600);
+        font-size: 9px;
+        text-align: center;
+        font-weight: 600;
+        z-index: 2;
+        box-shadow: var(--shadow-card);
+      }
+      .about-copy p {
+        color: var(--ink-soft);
+        line-height: 1.7;
+        margin: 16px 0 26px;
+        max-width: 460px;
+      }
+      .stat-row {
+        display: flex;
+        background: var(--green-800);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        margin-bottom: 26px;
+        width: fit-content;
+      }
+      .stat-row .stat {
+        padding: 22px 30px;
+        text-align: left;
+        color: #fff;
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+      }
+      .stat-row .stat:last-child {
+        border-right: none;
+      }
+      .stat-row .stat b {
+        display: block;
+        font-family: "Poppins", sans-serif;
+        font-size: 26px;
+        color: var(--gold-600);
+      }
+      .stat-row .stat span {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .signature {
+        font-family: "Alex Brush", cursive;
+        font-size: 32px;
+        color: var(--ink);
+      }
+
+      /* ============ PRODUCTS ============ */
+      .products-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .tabs {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 34px;
+      }
+      .tab-btn {
+        padding: 10px 20px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 500;
+        border: 1px solid var(--line);
+        color: var(--ink-soft);
+        transition: 0.25s;
+      }
+      .tab-btn.active,
+      .tab-btn:hover {
+        background: var(--green-800);
+        color: #fff;
+        border-color: var(--green-800);
+      }
+      .product-scroll {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(240px, 1fr);
+        gap: 22px;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        scroll-snap-type: x mandatory;
+      }
+      .product-scroll::-webkit-scrollbar {
+        height: 6px;
+      }
+      .product-scroll::-webkit-scrollbar-thumb {
+        background: var(--line);
+        border-radius: 10px;
+      }
+      .product-card {
+        scroll-snap-align: start;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        transition: 0.3s;
+      }
+      .product-card:hover {
+        box-shadow: var(--shadow-card);
+        transform: translateY(-4px);
+        border-color: transparent;
+      }
+      .product-thumb {
+        position: relative;
+        aspect-ratio: 1/0.95;
+        overflow: hidden;
+      }
+      .product-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.4s;
+      }
+      .product-card:hover .product-thumb img {
+        transform: scale(1.06);
+      }
+      .discount-flag {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: var(--green-800);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 5px 12px;
+        border-radius: 999px;
+        z-index: 2;
+      }
+      .product-actions {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        z-index: 2;
+      }
+      .product-actions button {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        transition: 0.2s;
+      }
+      .product-actions button:hover {
+        background: var(--gold-600);
+      }
+      .product-actions svg {
+        width: 14px;
+        height: 14px;
+        stroke: var(--ink);
+      }
+      .product-countdown {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(22, 49, 26, 0.88);
+        color: #fff;
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 6px;
+        font-size: 13px;
+        font-weight: 600;
+        z-index: 2;
+      }
+      .product-countdown div {
+        text-align: center;
+      }
+      .product-countdown span {
+        display: block;
+        font-size: 9px;
+        font-weight: 400;
+        opacity: 0.75;
+        text-transform: uppercase;
+        margin-top: 2px;
+      }
+      .product-info {
+        padding: 18px;
+      }
+      .product-meta {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        color: var(--ink-soft);
+        margin-bottom: 6px;
+      }
+      .product-meta .rating {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: var(--ink);
+      }
+      .product-meta svg {
+        width: 12px;
+        height: 12px;
+        fill: var(--gold-600);
+      }
+      .product-info h4 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      .price-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .price-new {
+        color: var(--gold-700);
+        font-weight: 700;
+        font-size: 16px;
+      }
+      .price-old {
+        color: #a8a8a8;
+        text-decoration: line-through;
+        font-size: 14px;
+      }
+      .product-desc {
+        font-size: 13px;
+        color: var(--ink-soft);
+        margin: 6px 0 10px;
+      }
+      .card-shop-link {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--green-800);
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      /* ============ COUNTDOWN BANNER ============ */
+      .countdown-banner {
+        background: linear-gradient(120deg, var(--green-900), var(--green-800));
+        border-radius: var(--radius-lg);
+        padding: 50px 40px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        gap: 20px;
+        position: relative;
+        overflow: hidden;
+        margin: 60px 0;
+      }
+      .countdown-side img {
+        border-radius: var(--radius-md);
+        width: 100%;
+        aspect-ratio: 3/4;
+        object-fit: cover;
+        position: relative;
+        z-index: 1;
+      }
+      .countdown-mid {
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+      .countdown-mid .eyebrow {
+        color: var(--gold-600);
+        justify-content: center;
+        display: flex;
+      }
+      .countdown-mid .eyebrow::before {
+        background: var(--gold-600);
+      }
+      .countdown-mid h3 {
+        color: #fff;
+        font-size: 30px;
+        margin-bottom: 8px;
+      }
+      .countdown-mid p {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 14px;
+        margin-bottom: 22px;
+      }
+      .countdown-timer {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        margin-bottom: 26px;
+      }
+      .countdown-timer .box {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 12px;
+        padding: 12px 16px;
+        min-width: 64px;
+        text-align: center;
+      }
+      .countdown-timer .box b {
+        display: block;
+        color: #fff;
+        font-family: "Poppins", sans-serif;
+        font-size: 24px;
+      }
+      .countdown-timer .box span {
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.6);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .countdown-sep {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 22px;
+        align-self: center;
+      }
+
+      /* ============ DEALS GRID / WEEKLY BANNER ============ */
+      .deal-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-bottom: 24px;
+      }
+      .deal-card {
+        display: flex;
+        gap: 18px;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 14px;
+        align-items: center;
+        transition: 0.3s;
+      }
+      .deal-card:hover {
+        box-shadow: var(--shadow-card);
+        border-color: transparent;
+      }
+      .deal-card .thumb {
+        width: 130px;
+        height: 130px;
+        border-radius: 12px;
+        overflow: hidden;
+        flex-shrink: 0;
+        position: relative;
+      }
+      .deal-card .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .deal-card .info h4 {
+        font-size: 16px;
+        margin-bottom: 6px;
+      }
+      .deal-card .info p {
+        font-size: 13px;
+        color: var(--ink-soft);
+        margin: 6px 0 10px;
+      }
+      .weekly-banner {
+        position: relative;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        padding: 46px;
+        min-height: 220px;
+        display: flex;
+        align-items: center;
+      }
+      .weekly-banner img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+      }
+      .weekly-banner::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          var(--green-900) 28%,
+          rgba(22, 49, 26, 0.35) 70%
+        );
+        z-index: 1;
+      }
+      .weekly-banner .content {
+        position: relative;
+        z-index: 2;
+        max-width: 58%;
+      }
+      .weekly-banner h3 {
+        color: #fff;
+        font-size: 28px;
+        margin-bottom: 12px;
+      }
+      .weekly-banner h3 span {
+        color: var(--gold-600);
+      }
+      .weekly-banner p {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 14px;
+        margin-bottom: 22px;
+      }
+
+      /* ============ NEW ARRIVALS ============ */
+      .arrival-layout {
+        display: grid;
+        grid-template-columns: 0.8fr 2fr;
+        gap: 22px;
+      }
+      .arrival-feature {
+        position: relative;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        min-height: 100%;
+      }
+      .arrival-feature img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        inset: 0;
+      }
+      .arrival-feature::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(22, 49, 26, 0.85),
+          rgba(22, 49, 26, 0) 55%
+        );
+      }
+      .arrival-feature .content {
+        position: relative;
+        z-index: 1;
+        padding: 24px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        color: #fff;
+        min-height: 420px;
+      }
+      .arrival-feature h3 {
+        color: #fff;
+        font-size: 24px;
+        margin-bottom: 4px;
+      }
+      .arrival-feature p {
+        font-size: 12px;
+        opacity: 0.8;
+        margin-bottom: 14px;
+      }
+      .arrival-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
+
+      /* ============ TESTIMONIALS ============ */
+      .testi-wrap {
+        max-width: 720px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .avatar-row {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        margin-bottom: 30px;
+      }
+      .avatar-row img {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid transparent;
+        cursor: pointer;
+        transition: 0.2s;
+        opacity: 0.6;
+      }
+      .avatar-row img.active {
+        border-color: var(--gold-600);
+        opacity: 1;
+        transform: scale(1.1);
+      }
+      .testi-card h3 {
+        font-size: 24px;
+        margin-bottom: 16px;
+      }
+      .testi-card p {
+        color: var(--ink-soft);
+        line-height: 1.8;
+        margin-bottom: 18px;
+      }
+      .testi-stars {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 16px;
+      }
+      .testi-stars svg {
+        width: 16px;
+        height: 16px;
+        fill: var(--gold-600);
+      }
+      .testi-stars span {
+        margin-left: 6px;
+        font-weight: 600;
+      }
+      .testi-name {
+        font-weight: 700;
+      }
+      .testi-role {
+        font-size: 13px;
+        color: var(--ink-soft);
+      }
+      .testi-nav {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 30px;
+      }
+      .testi-nav button {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.2s;
+      }
+      .testi-nav button svg {
+        width: 18px;
+        height: 18px;
+      }
+      .testi-nav .prev {
+        background: var(--gold-600);
+      }
+      .testi-nav .prev svg {
+        stroke: #fff;
+      }
+      .testi-nav .next {
+        background: var(--green-800);
+      }
+      .testi-nav .next svg {
+        stroke: #fff;
+      }
+      .testi-nav button:hover {
+        opacity: 0.85;
+        transform: scale(1.06);
+      }
+
+      /* ============ BLOG ============ */
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 26px;
+      }
+      .blog-card img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        border-radius: var(--radius-md);
+        margin-bottom: 16px;
+      }
+      .blog-card {
+        position: relative;
+      }
+      .blog-tag {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        background: var(--green-800);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 5px 12px;
+        border-radius: 999px;
+      }
+      .blog-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        color: var(--ink-soft);
+        margin-bottom: 8px;
+      }
+      .blog-meta .dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--ink-soft);
+      }
+      .blog-card h4 {
+        font-size: 17px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        line-height: 1.4;
+      }
+      .blog-card .read-more {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--gold-700);
+        border-bottom: 1px solid var(--gold-700);
+        padding-bottom: 2px;
+      }
+
+      /* ============ INSTAGRAM ============ */
+      .insta-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 14px;
+      }
+      .insta-grid a {
+        position: relative;
+        overflow: hidden;
+        border-radius: 14px;
+        aspect-ratio: 1/1;
+      }
+      .insta-grid a.big {
+        grid-row: 1/3;
+        aspect-ratio: auto;
+      }
+      .insta-grid img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.4s;
+      }
+      .insta-grid a::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(22, 49, 26, 0);
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .insta-grid a:hover::after {
+        background: rgba(22, 49, 26, 0.35);
+      }
+      .insta-grid a:hover img {
+        transform: scale(1.08);
+      }
+      .insta-ic {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 30px;
+        height: 30px;
+        opacity: 0;
+        transition: 0.3s;
+        z-index: 2;
+      }
+      .insta-grid a:hover .insta-ic {
+        opacity: 1;
+      }
+      .insta-ic svg {
+        width: 100%;
+        height: 100%;
+        fill: #fff;
+      }
+
+      /* ============ FAQ ============ */
+      .faq-layout {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 30px;
+        align-items: start;
+      }
+      .faq-item {
+        border-bottom: 1px solid var(--line);
+        border-radius: 12px;
+        margin-bottom: 12px;
+        overflow: hidden;
+        transition: 0.3s;
+      }
+      .faq-item.open {
+        background: var(--green-800);
+        border-color: transparent;
+      }
+      .faq-q {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 15px;
+      }
+      .faq-item.open .faq-q {
+        color: #fff;
+      }
+      .faq-q .plus {
+        width: 22px;
+        height: 22px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: 1px solid var(--line);
+        position: relative;
+      }
+      .faq-item.open .faq-q .plus {
+        border-color: rgba(255, 255, 255, 0.4);
+      }
+      .faq-q .plus::before,
+      .faq-q .plus::after {
+        content: "";
+        position: absolute;
+        background: var(--ink);
+      }
+      .faq-item.open .faq-q .plus::before,
+      .faq-item.open .faq-q .plus::after {
+        background: #fff;
+      }
+      .faq-q .plus::before {
+        width: 10px;
+        height: 1.5px;
+      }
+      .faq-q .plus::after {
+        width: 1.5px;
+        height: 10px;
+        transition: 0.25s;
+      }
+      .faq-item.open .faq-q .plus::after {
+        opacity: 0;
+      }
+      .faq-a {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+      }
+      .faq-a p {
+        padding: 0 20px 20px;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+      .faq-contact {
+        background: var(--green-800);
+        border-radius: var(--radius-md);
+        padding: 32px 26px;
+        text-align: center;
+        color: #fff;
+      }
+      .faq-contact .ic-bubble {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: var(--gold-600);
+        margin: 0 auto 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .faq-contact .ic-bubble svg {
+        width: 24px;
+        height: 24px;
+        stroke: #fff;
+        fill: none;
+      }
+      .faq-contact h4 {
+        color: #fff;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+      .faq-contact p {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      /* ============ TRUST BADGES ============ */
+      .trust-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 60px;
+        padding-top: 50px;
+        border-top: 1px solid var(--line);
+      }
+      .trust-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .trust-item .ic {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--gold-100);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .trust-item .ic svg {
+        width: 22px;
+        height: 22px;
+        stroke: var(--gold-700);
+      }
+      .trust-item h5 {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .trust-item p {
+        font-size: 13px;
+        color: var(--ink-soft);
+      }
+
+      /* ============ NEWSLETTER ============ */
+      .newsletter {
+        background: var(--cream);
+        text-align: center;
+      }
+      .newsletter h2 {
+        font-size: clamp(24px, 3vw, 34px);
+        max-width: 640px;
+        margin: 0 auto 10px;
+      }
+      .newsletter > .container > p {
+        color: var(--ink-soft);
+        margin-bottom: 30px;
+      }
+      .newsletter-form {
+        display: flex;
+        max-width: 460px;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 999px;
+        padding: 6px;
+        box-shadow: var(--shadow-soft);
+      }
+      .newsletter-form input {
+        flex: 1;
+        border: none;
+        background: transparent;
+        padding: 12px 20px;
+        font-size: 14px;
+        outline: none;
+      }
+      .newsletter-form button {
+        padding: 12px 26px;
+        border-radius: 999px;
+        background: var(--green-800);
+        color: #fff;
+        font-weight: 500;
+        transition: 0.2s;
+      }
+      .newsletter-form button:hover {
+        background: var(--green-900);
+      }
+
+      /* ============ ENHANCEMENTS: INTERACTION / CUSTOMER / ADMIN ============ */
+      .nav-icons button {
+        position: relative;
+      }
+      .nav-count {
+        position: absolute;
+        top: -9px;
+        right: -10px;
+        min-width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--gold-600);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .catalog-tools {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 12px;
+        margin: -14px 0 26px;
+      }
+      .catalog-tools input,
+      .catalog-tools select,
+      .profile-form input,
+      .profile-form select {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: #fff;
+        padding: 13px 16px;
+        color: var(--ink);
+        outline: none;
+        transition:
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+      .catalog-tools input:focus,
+      .catalog-tools select:focus,
+      .profile-form input:focus,
+      .profile-form select:focus {
+        border-color: var(--gold-600);
+        box-shadow: 0 0 0 4px rgba(201, 155, 78, 0.14);
+      }
+      .product-card,
+      .deal-card,
+      .blog-card,
+      .cat-card,
+      .customer-card,
+      .admin-card {
+        will-change: transform;
+      }
+      .product-card.reveal-card,
+      .deal-card.reveal-card,
+      .blog-card.reveal-card,
+      .cat-card.reveal-card,
+      .customer-card.reveal-card,
+      .admin-card.reveal-card {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      .product-card.reveal-card.in-view,
+      .deal-card.reveal-card.in-view,
+      .blog-card.reveal-card.in-view,
+      .cat-card.reveal-card.in-view,
+      .customer-card.reveal-card.in-view,
+      .admin-card.reveal-card.in-view {
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .product-actions button.is-saved {
+        background: var(--gold-600);
+      }
+      .product-actions button.is-saved svg {
+        fill: #fff;
+        stroke: #fff;
+      }
+      .cart-drawer {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        pointer-events: none;
+      }
+      .cart-drawer.open {
+        pointer-events: auto;
+      }
+      .cart-drawer::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(22, 49, 26, 0.35);
+        opacity: 0;
+        transition: 0.25s;
+      }
+      .cart-drawer.open::before {
+        opacity: 1;
+      }
+      .cart-panel {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: min(420px, 100%);
+        height: 100%;
+        background: #fff;
+        padding: 24px;
+        box-shadow: -16px 0 40px rgba(22, 49, 26, 0.18);
+        transform: translateX(100%);
+        transition: 0.32s ease;
+        overflow: auto;
+      }
+      .cart-drawer.open .cart-panel {
+        transform: translateX(0);
+      }
+      .cart-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 14px;
+        margin-bottom: 16px;
+      }
+      .cart-head h3 {
+        font-size: 24px;
+      }
+      .cart-close {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--green-100);
+        font-size: 22px;
+      }
+      .cart-item {
+        display: grid;
+        grid-template-columns: 64px 1fr auto;
+        gap: 12px;
+        align-items: center;
+        border-bottom: 1px solid var(--line);
+        padding: 12px 0;
+      }
+      .cart-item img {
+        width: 64px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+      .cart-item h4 {
+        font-size: 14px;
+        margin-bottom: 4px;
+      }
+      .cart-item small {
+        color: var(--ink-soft);
+      }
+      .cart-total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 18px 0;
+        font-weight: 700;
+      }
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: 22px;
+        transform: translate(-50%, 16px);
+        background: var(--green-900);
+        color: #fff;
+        padding: 12px 18px;
+        border-radius: 999px;
+        box-shadow: var(--shadow-card);
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.25s;
+        z-index: 1200;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+      .customer-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
+      .customer-card,
+      .admin-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 24px;
+        box-shadow: var(--shadow-soft);
+      }
+      .customer-card h3,
+      .admin-card h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+      .customer-card p,
+      .admin-card p {
+        color: var(--ink-soft);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+      .mini-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .mini-list .empty {
+        color: var(--ink-soft);
+        font-size: 13px;
+      }
+      .mini-list-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--cream);
+        border-radius: 12px;
+        padding: 8px;
+      }
+      .mini-list-item img {
+        width: 42px;
+        height: 42px;
+        object-fit: cover;
+        border-radius: 9px;
+      }
+      .track-code {
+        font-weight: 700;
+        color: var(--green-800) !important;
+      }
+      .track-steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin-top: 18px;
+      }
+      .track-steps span {
+        background: var(--cream);
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
+        font-size: 12px;
+        color: var(--ink-soft);
+      }
+      .track-steps span.done {
+        background: var(--green-800);
+        color: #fff;
+      }
+      .profile-form {
+        display: grid;
+        gap: 12px;
+        margin-top: 14px;
+      }
+      .admin-role {
+        background: var(--green-800);
+        color: #fff;
+        border-radius: 999px;
+        padding: 10px 16px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .admin-layout {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 22px;
+      }
+      .admin-menu {
+        display: grid;
+        gap: 8px;
+        height: max-content;
+        position: sticky;
+        top: 100px;
+      }
+      .admin-menu button {
+        text-align: left;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 12px 16px;
+        color: var(--ink-soft);
+        font-weight: 600;
+        transition: 0.2s;
+      }
+      .admin-menu button.active,
+      .admin-menu button:hover {
+        background: var(--green-800);
+        border-color: var(--green-800);
+        color: #fff;
+      }
+      .metric-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin-bottom: 18px;
+      }
+      .metric-row div {
+        background: var(--green-800);
+        color: #fff;
+        border-radius: var(--radius-md);
+        padding: 18px;
+      }
+      .metric-row b {
+        display: block;
+        font-family: "Poppins", sans-serif;
+        font-size: 24px;
+        color: var(--gold-600);
+      }
+      .metric-row span {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.75);
+      }
+      .admin-panels {
+        display: grid;
+        grid-template-columns: 1.35fr 0.75fr;
+        gap: 18px;
+      }
+      .admin-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 18px;
+        font-size: 13px;
+      }
+      .admin-table th,
+      .admin-table td {
+        border-bottom: 1px solid var(--line);
+        padding: 12px;
+        text-align: left;
+      }
+      .admin-table th {
+        color: var(--green-800);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .status-pill {
+        display: inline-flex;
+        border-radius: 999px;
+        padding: 5px 9px;
+        background: var(--green-100);
+        color: var(--green-800);
+        font-size: 11px;
+        font-weight: 700;
+      }
+      .sales-chart {
+        height: 190px;
+        display: flex;
+        align-items: end;
+        gap: 9px;
+        background: var(--cream);
+        border-radius: var(--radius-md);
+        padding: 16px;
+        margin: 16px 0;
+      }
+      .sales-chart span {
+        flex: 1;
+        border-radius: 8px 8px 0 0;
+        background: linear-gradient(180deg, var(--gold-600), var(--green-800));
+        min-height: 30px;
+      }
+
+      /* ============ FOOTER ============ */
+      footer {
+        background: var(--green-900);
+        color: rgba(255, 255, 255, 0.8);
+        padding: 70px 0 0;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
+        gap: 30px;
+        padding-bottom: 50px;
+      }
+      .footer-brand .logo {
+        color: #fff;
+        margin-bottom: 16px;
+      }
+      .footer-brand .logo .mark {
+        background: var(--gold-600);
+      }
+      .footer-brand p {
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 20px;
+        max-width: 280px;
+      }
+      .footer-socials {
+        display: flex;
+        gap: 10px;
+      }
+      .footer-socials a {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.2s;
+      }
+      .footer-socials a:hover {
+        background: var(--gold-600);
+      }
+      .footer-socials svg {
+        width: 14px;
+        height: 14px;
+        fill: #fff;
+      }
+      .footer-col h5 {
+        color: #fff;
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 18px;
+      }
+      .footer-col ul li {
+        margin-bottom: 12px;
+        font-size: 14px;
+      }
+      .footer-col ul li a {
+        transition: 0.2s;
+      }
+      .footer-col ul li a:hover {
+        color: var(--gold-600);
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 20px 0;
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.6);
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .footer-bottom .copyright a {
+        color: var(--gold-600);
+      }
+      .footer-bottom .locale {
+        display: flex;
+        gap: 14px;
+      }
+
+      /* ============ MISC / RESPONSIVE ============ */
+      .hide-sm {
+        display: inline-flex;
+      }
+      .hide-md {
+        display: flex;
+      }
+      @media (max-width: 1024px) {
+        .cat-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .about-grid,
+        .arrival-layout {
+          grid-template-columns: 1fr;
+        }
+        .arrival-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+        .insta-grid {
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(3, 1fr);
+        }
+        .insta-grid a.big {
+          grid-row: auto;
+          grid-column: span 1;
+        }
+      }
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+        .burger {
+          display: flex;
+        }
+        .hero .container {
+          grid-template-columns: 1fr;
+        }
+        .hero-visual {
+          margin-top: 40px;
+          order: -1;
+        }
+        .hero-copy p {
+          max-width: 100%;
+        }
+        .promo-grid,
+        .deal-grid,
+        .blog-grid,
+        .arrival-grid,
+        .trust-row {
+          grid-template-columns: 1fr;
+        }
+        .catalog-tools,
+        .customer-grid,
+        .admin-layout,
+        .admin-panels,
+        .metric-row {
+          grid-template-columns: 1fr;
+        }
+        .admin-menu {
+          position: static;
+        }
+        .cat-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .countdown-banner {
+          grid-template-columns: 1fr;
+          padding: 32px 20px;
+        }
+        .countdown-side {
+          display: none;
+        }
+        .about-grid {
+          gap: 36px;
+        }
+        .faq-layout {
+          grid-template-columns: 1fr;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .insta-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .weekly-banner .content {
+          max-width: 100%;
+        }
+        .weekly-banner {
+          padding: 30px 24px;
+        }
+        .track-steps {
+          grid-template-columns: 1fr 1fr;
+        }
+        .section {
+          padding: 56px 0;
+        }
+        .hide-sm {
+          display: none;
+        }
+        .topbar .topbar-left span:last-child {
+          display: none;
+        }
+      }
+      @media (max-width: 480px) {
+        .cat-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .stat-row {
+          flex-wrap: wrap;
+          width: 100%;
+        }
+        .stat-row .stat {
+          flex: 1 1 33%;
+          padding: 16px;
+        }
+        .countdown-timer {
+          gap: 8px;
+        }
+        .countdown-timer .box {
+          min-width: 52px;
+          padding: 10px 8px;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============ TOP BAR ============ -->
+    <div class="topbar">
+      <div class="container">
+        <div class="topbar-left">
+          <span>Call Us : +91-9837387900</span>
+          <span class="hide-sm"
+            >Sign up and GET 20% OFF for your first order!
+            <a href="#" class="signup">Sign up now</a></span
+          >
+        </div>
+        <div class="topbar-right">
+          <div class="socials" aria-label="Social media links">
+            <a href="#" aria-label="Facebook"
+              ><svg viewBox="0 0 24 24">
+                <path
+                  d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14C17.17 2.1 15.9 2 14.56 2 11.73 2 9.75 3.74 9.75 6.9V9.5H7v4h2.75V22h4.25v-8.5z"
+                /></svg
+            ></a>
+            <a href="#" aria-label="Twitter"
+              ><svg viewBox="0 0 24 24">
+                <path
+                  d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.5-1.3 1.8-2.3-.8.5-1.7.8-2.6 1-.8-.8-1.9-1.3-3.1-1.3-2.3 0-4.2 1.9-4.2 4.2 0 .3 0 .6.1.9-3.5-.2-6.6-1.9-8.7-4.4-.4.6-.6 1.3-.6 2.1 0 1.4.7 2.7 1.9 3.4-.7 0-1.3-.2-1.9-.5v.1c0 2 1.4 3.7 3.3 4.1-.3.1-.7.1-1.1.1-.3 0-.5 0-.8-.1.5 1.7 2.1 2.9 4 2.9-1.5 1.1-3.3 1.8-5.3 1.8-.3 0-.7 0-1-.1 1.9 1.2 4.1 1.9 6.5 1.9 7.8 0 12-6.4 12-12v-.5c.8-.6 1.5-1.3 2-2.1z"
+                /></svg
+            ></a>
+            <a href="#" aria-label="Pinterest"
+              ><svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2C6.5 2 2 6.5 2 12c0 4.2 2.6 7.8 6.3 9.3-.1-.8-.2-2 0-2.9.2-.8 1.3-5.5 1.3-5.5s-.3-.7-.3-1.6c0-1.5.9-2.7 2-2.7.9 0 1.4.7 1.4 1.6 0 .9-.6 2.3-.9 3.6-.3 1.1.5 2 1.6 2 1.9 0 3.4-2 3.4-4.9 0-2.6-1.9-4.4-4.5-4.4-3.1 0-4.9 2.3-4.9 4.6 0 .9.4 1.9.8 2.4.1.1.1.2.1.3-.1.4-.3 1.1-.3 1.3 0 .2-.2.2-.4.1-1.4-.6-2.2-2.6-2.2-4.2 0-3.4 2.5-6.6 7.1-6.6 3.7 0 6.6 2.7 6.6 6.2 0 3.7-2.3 6.7-5.6 6.7-1.1 0-2.1-.6-2.5-1.2l-.7 2.6c-.2.9-.9 2.1-1.4 2.8 1 .3 2.1.5 3.3.5 5.5 0 10-4.5 10-10S17.5 2 12 2z"
+                /></svg
+            ></a>
+            <a href="#" aria-label="Instagram"
+              ><svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2c2.7 0 3.1 0 4.1.1 1.1 0 1.8.2 2.4.4.6.3 1.2.6 1.7 1.1.5.5.9 1 1.1 1.7.2.6.4 1.3.4 2.4.1 1 .1 1.4.1 4.1s0 3.1-.1 4.1c0 1.1-.2 1.8-.4 2.4-.3.6-.6 1.2-1.1 1.7-.5.5-1 .9-1.7 1.1-.6.2-1.3.4-2.4.4-1 .1-1.4.1-4.1.1s-3.1 0-4.1-.1c-1.1 0-1.8-.2-2.4-.4-.6-.3-1.2-.6-1.7-1.1-.5-.5-.9-1-1.1-1.7-.2-.6-.4-1.3-.4-2.4C2 15.1 2 14.7 2 12s0-3.1.1-4.1c0-1.1.2-1.8.4-2.4.3-.6.6-1.2 1.1-1.7.5-.5 1-.9 1.7-1.1.6-.2 1.3-.4 2.4-.4C8.9 2 9.3 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"
+                /></svg
+            ></a>
+            <a href="#" aria-label="YouTube"
+              ><svg viewBox="0 0 24 24">
+                <path
+                  d="M23 12s0-3.4-.4-5c-.3-.9-1-1.6-1.9-1.9C19 4.7 12 4.7 12 4.7s-7 0-8.7.4c-.9.3-1.6 1-1.9 1.9C1 8.6 1 12 1 12s0 3.4.4 5c.3.9 1 1.6 1.9 1.9 1.7.4 8.7.4 8.7.4s7 0 8.7-.4c.9-.3 1.6-1 1.9-1.9.4-1.6.4-5 .4-5zM9.8 15.3V8.7l5.8 3.3-5.8 3.3z"
+                /></svg
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ HEADER ============ -->
+    <header class="main-nav">
+      <div class="container nav-flex">
+        <a href="#" class="logo"><span class="mark">B</span>Beauty Shop.</a>
+        <nav class="nav-links hide-md">
+          <a href="#" class="active">Home</a>
+          <a href="#shop">Shop</a>
+          <a href="#categories">Skin Care</a>
+          <a href="#products">Makeup</a>
+          <a href="#products">Hair Care</a>
+          <a href="#about">About Us</a>
+          <a href="#blog">Blogs</a>
+          <a href="account.html">Account</a>
+          <a href="admin-dashboard.html">Admin</a>
+        </nav>
+        <div class="nav-icons">
+          <button aria-label="Search">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <path d="M21 21l-4.3-4.3" />
+            </svg>
+          </button>
+          <button class="hide-sm" id="wishlistNav" aria-label="Wishlist">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M12 21s-7.5-4.6-10-9.3C.4 8.4 2 5 5.4 5c2 0 3.4 1.1 4.1 2.2.2.3.7.3.9 0C11.2 6.1 12.6 5 14.6 5 18 5 19.6 8.4 22 11.7 19.5 16.4 12 21 12 21z"
+              /></svg
+            ><span class="nav-count" id="wishCount">0</span>
+          </button>
+          <button class="hide-sm" id="cartNav" aria-label="Cart">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="9" cy="21" r="1" />
+              <circle cx="20" cy="21" r="1" />
+              <path
+                d="M1 1h4l2.7 13.4a2 2 0 002 1.6h9.7a2 2 0 002-1.6L23 6H6"
+              /></svg
+            ><span class="nav-count" id="cartCount">0</span>
+          </button>
+          <button class="hide-sm" id="accountNav" aria-label="Account">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" />
+            </svg>
+          </button>
+          <div
+            class="burger"
+            id="burgerBtn"
+            role="button"
+            aria-label="Menu"
+            tabindex="0"
+          >
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-copy">
+          <span class="eyebrow-pill"
+            ><span class="dot"
+              ><svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2l2.9 6.3L21 9l-5 4.6L17.5 21 12 17.6 6.5 21 8 13.6 3 9l6.1-.7L12 2z"
+                /></svg></span
+            >Glow with Confidence, Shop with Trust</span
+          >
+          <h1>
+            Your Ultimate <span class="gold">Beauty</span> & Cosmetics Hub
+          </h1>
+          <p>
+            Discover the latest in beauty and cosmetics. From skincare to makeup,
+            we bring you the best products to enhance your natural beauty.
+          </p>
+          <div class="hero-ctas">
+            <a href="#products" class="btn btn-primary"
+              >Shop Now
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#fff"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" /></svg
+            ></a>
+            <a href="#products" class="link-more"
+              >View All Products
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" /></svg
+            ></a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-blob"></div>
+          <img
+            class="hero-model"
+            src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=900&auto=format&fit=crop"
+            alt="Woman with skincare towel wrap, radiant skin — hero model"
+          />
+          <div class="trust-seal">TRUSTED<br />SHOP</div>
+          <div class="floating-badge badge-delivery">
+            <span class="ic"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M3 7h11v9H3zM14 10h4l3 3v3h-7zM6.5 20a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM17.5 20a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
+                /></svg></span
+            >Fast Delivery
+          </div>
+          <div class="floating-badge badge-secure">
+            <span class="ic"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="7" width="20" height="14" rx="2" />
+                <path d="M2 11h20" /></svg></span
+            >Secure Payment
+          </div>
+        </div>
+      </div>
+
+      <!-- Ticker -->
+      <div class="ticker">
+        <div class="ticker-track" id="tickerTrack"></div>
+      </div>
+    </section>
+
+    <!-- ============ SHOP BY CATEGORY ============ -->
+    <section class="section" id="categories">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow" style="justify-content: center; display: flex"
+            >Our Categories</span
+          >
+          <h2>Shop By <span class="gold">Category</span></h2>
+        </div>
+        <div class="cat-grid" id="catGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============ PROMO CARDS ============ -->
+    <section class="section bg-cream" style="padding-top: 0">
+      <div class="container">
+        <div class="promo-grid">
+          <div class="promo-card">
+            <img
+              src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=800&auto=format&fit=crop"
+              alt="Woman with healthy hair, hair care deals"
+            />
+            <div class="content">
+              <span class="promo-tag">Flat 25% Discount</span>
+              <h3>Special <span class="accent">Hair</span> Care Deals</h3>
+              <p>Discover the latest in hair care and styling products.</p>
+              <a href="#products" class="btn btn-primary"
+                >Shop Now
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" /></svg
+              ></a>
+            </div>
+          </div>
+          <div class="promo-card">
+            <img
+              src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?q=80&w=800&auto=format&fit=crop"
+              alt="Woman with facial sheet mask, skincare deals"
+            />
+            <div class="content">
+              <span class="promo-tag">Flat 20% Discount</span>
+              <h3>Save Big on <span class="accent">Skincare</span></h3>
+              <p>Discover the latest in skincare and beauty products.</p>
+              <a href="#products" class="btn btn-white"
+                >Shop Now
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1b3f20"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" /></svg
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT US ============ -->
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-collage">
+          <div class="frame"></div>
+          <div class="collage-grid">
+            <img
+              class="c1"
+              src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=500&auto=format&fit=crop"
+              alt="Woman applying skincare cream, towel wrap"
+            />
+            <img
+              class="c2"
+              src="https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=500&auto=format&fit=crop"
+              alt="Woman applying moisturizer to face"
+            />
+            <img
+              class="c3"
+              src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?q=80&w=500&auto=format&fit=crop"
+              alt="Woman with skincare products applying serum"
+            />
+            <img
+              class="c4"
+              src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?q=80&w=500&auto=format&fit=crop"
+              alt="Woman in bathrobe touching shoulder, skincare routine"
+            />
+          </div>
+          <div class="collage-seal">TRUSTED<br />BRAND</div>
+        </div>
+        <div class="about-copy">
+          <span class="eyebrow">About Us</span>
+          <h2>Your Journey to <span class="gold">Effortless Elegance</span></h2>
+          <p>
+            Discover the latest in beauty and cosmetics. From skincare to makeup,
+            we bring you the best products to enhance your natural beauty.
+          </p>
+          <div class="stat-row">
+            <div class="stat"><b>24+</b><span>Categories</span></div>
+            <div class="stat"><b>2500+</b><span>Products</span></div>
+            <div class="stat"><b>99%</b><span>Satisfied Customer</span></div>
+          </div>
+          <p class="signature">Jenny Alexander</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BEST SELLERS ============ -->
+    <section class="section bg-cream" id="products">
+      <div class="container">
+        <div class="products-head">
+          <div class="section-head left" style="margin-bottom: 0">
+            <span class="eyebrow">Our Products</span>
+            <h2>Our <span class="gold">Best Sellers</span> Products</h2>
+          </div>
+          <a href="#" class="btn btn-primary"
+            >View All Products
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
+              <path d="M5 12h14M13 6l6 6-6 6" /></svg
+          ></a>
+        </div>
+        <div class="tabs" id="tabsBestSellers"></div>
+        <div class="catalog-tools">
+          <input
+            type="search"
+            id="catalogSearch"
+            placeholder="Search serum, fragrance, makeup..."
+            aria-label="Search products"
+          />
+          <select id="catalogPrice" aria-label="Filter by price">
+            <option value="all">All Prices</option>
+            <option value="30">Under $30</option>
+            <option value="50">Under $50</option>
+            <option value="70">Under $70</option>
+          </select>
+          <select id="catalogSort" aria-label="Sort products">
+            <option value="featured">Featured</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+          </select>
+        </div>
+        <div class="product-scroll" id="bestSellerGrid"></div>
+
+        <!-- Countdown Banner -->
+        <div class="countdown-banner">
+          <div class="countdown-side">
+            <img
+              src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=500&auto=format&fit=crop"
+              alt="Smiling woman with towel, glowing skin, summer deal"
+            />
+          </div>
+          <div class="countdown-mid">
+            <span class="eyebrow">Special Savings</span>
+            <h3>Summer <span class="gold">Glow</span> Deals</h3>
+            <p>Get 50% off - Limited Time Offer!</p>
+            <div
+              class="countdown-timer"
+              id="mainCountdown"
+              data-deadline="2026-08-01T00:00:00"
+            >
+              <div class="box"><b class="d">00</b><span>Days</span></div>
+              <span class="countdown-sep">:</span>
+              <div class="box"><b class="h">00</b><span>Hours</span></div>
+              <span class="countdown-sep">:</span>
+              <div class="box"><b class="m">00</b><span>Minutes</span></div>
+              <span class="countdown-sep">:</span>
+              <div class="box"><b class="s">00</b><span>Seconds</span></div>
+            </div>
+            <a href="#products" class="btn btn-primary"
+              >Shop Now
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#fff"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" /></svg
+            ></a>
+          </div>
+          <div class="countdown-side">
+            <img
+              src="https://images.unsplash.com/photo-1552693673-1bf958298935?q=80&w=500&auto=format&fit=crop"
+              alt="Woman in bathrobe, hand raised, skincare glow"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Ticker -->
+      <div class="ticker" style="margin-top: 0">
+        <div class="ticker-track" id="tickerTrack2"></div>
+      </div>
+    </section>
+
+    <!-- ============ DEALS OF THE DAY ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow" style="justify-content: center; display: flex"
+            >Today's Offers</span
+          >
+          <h2>Deals <span class="gold">of the Day</span></h2>
+        </div>
+        <div class="deal-grid" id="dealGrid"></div>
+
+        <div class="weekly-banner">
+          <img
+            src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?q=80&w=1200&auto=format&fit=crop"
+            alt="Two women friends, beauty must-haves promotion"
+          />
+          <div class="content">
+            <span class="promo-tag">Weekly Deals</span>
+            <h3>Amazing Savings: <span>Weekly Beauty Must-Haves</span></h3>
+            <p>
+              Discover the latest in beauty and cosmetics. From skincare to makeup,
+              we bring you the best products to enhance your natural beauty.
+            </p>
+            <a href="#products" class="btn btn-white"
+              >Shop Now
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#1b3f20"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" /></svg
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ticker -->
+      <div class="ticker" style="margin-top: 56px">
+        <div class="ticker-track" id="tickerTrack3"></div>
+      </div>
+    </section>
+
+    <!-- ============ NEW ARRIVALS ============ -->
+    <section class="section bg-cream">
+      <div class="container">
+        <div class="products-head">
+          <div class="section-head left" style="margin-bottom: 0">
+            <span class="eyebrow">New Arrival</span>
+            <h2>New Arrival <span class="gold">Products</span></h2>
+          </div>
+          <p
+            style="
+              max-width: 340px;
+              color: var(--ink-soft);
+              font-size: 14px;
+              text-align: right;
+            "
+          >
+            Discover the latest in beauty and cosmetics. From skincare to makeup,
+            we bring you the best products to enhance your natural beauty.
+          </p>
+        </div>
+        <div class="arrival-layout">
+          <div class="arrival-feature">
+            <img
+              src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?q=80&w=600&auto=format&fit=crop"
+              alt="Woman applying skincare in mirror, 50% off promotion"
+            />
+            <div class="content">
+              <h3>50% Off</h3>
+              <p>18 JAN &nbsp;–&nbsp; 26 JAN</p>
+              <a href="#products" class="btn btn-white">Shop Now</a>
+            </div>
+          </div>
+          <div class="arrival-grid" id="arrivalGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow" style="justify-content: center; display: flex"
+            >Testimonials</span
+          >
+          <h2>
+            Testimonials from <span class="gold">Our Loyal Customers</span>
+          </h2>
+        </div>
+        <div class="testi-wrap">
+          <div class="avatar-row" id="avatarRow"></div>
+          <div class="testi-card" id="testiCard">
+            <h3>The Best Thing I've Used for My Skin!</h3>
+            <p>
+                I have been using this product for a few weeks now, and I can
+                already see a difference in my skin. It's smoother, brighter, and
+                more hydrated. I would highly recommend it to anyone looking for
+                an effective skincare solution.
+            </p>
+            <div class="testi-stars">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2l2.9 6.3L21 9l-5 4.6L17.5 21 12 17.6 6.5 21 8 13.6 3 9l6.1-.7L12 2z"
+                />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2l2.9 6.3L21 9l-5 4.6L17.5 21 12 17.6 6.5 21 8 13.6 3 9l6.1-.7L12 2z"
+                />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2l2.9 6.3L21 9l-5 4.6L17.5 21 12 17.6 6.5 21 8 13.6 3 9l6.1-.7L12 2z"
+                />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2l2.9 6.3L21 9l-5 4.6L17.5 21 12 17.6 6.5 21 8 13.6 3 9l6.1-.7L12 2z"
+                />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2l2.9 6.3L21 9l-5 4.6L17.5 21 12 17.6 6.5 21 8 13.6 3 9l6.1-.7L12 2z"
+                />
+              </svg>
+              <span>5.0</span>
+            </div>
+            <p class="testi-name">Bessie Cooper</p>
+            <p class="testi-role">Happy Customer</p>
+          </div>
+          <div class="testi-nav">
+            <button
+              class="prev"
+              id="testiPrev"
+              aria-label="Previous testimonial"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button class="next" id="testiNext" aria-label="Next testimonial">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NEWS & BLOGS ============ -->
+    <section class="section bg-cream" id="blog">
+      <div class="container">
+        <div class="products-head">
+          <div class="section-head left" style="margin-bottom: 0">
+            <span class="eyebrow">News & Blogs</span>
+            <h2>Our Latest <span class="gold">News & Blogs</span></h2>
+          </div>
+          <a href="#" class="btn btn-primary"
+            >View All Blogs
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
+              <path d="M5 12h14M13 6l6 6-6 6" /></svg
+          ></a>
+        </div>
+        <div class="blog-grid" id="blogGrid"></div>
+      </div>
+
+      <!-- Ticker -->
+      <div class="ticker" style="margin-top: 56px">
+        <div class="ticker-track" id="tickerTrack4"></div>
+      </div>
+    </section>
+
+    <!-- ============ INSTAGRAM ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow" style="justify-content: center; display: flex"
+            >Follow Us</span
+          >
+          <h2>Follow Us On <span class="gold">Instagram</span></h2>
+        </div>
+        <div class="insta-grid" id="instaGrid"></div>
+      </div>
+
+      <!-- Ticker -->
+      <div class="ticker" style="margin-top: 56px">
+        <div class="ticker-track" id="tickerTrack5"></div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section bg-cream">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow" style="justify-content: center; display: flex"
+            >FAQs</span
+          >
+          <h2>Question? <span class="gold">Look here.</span></h2>
+        </div>
+        <div class="faq-layout">
+          <div id="faqList"></div>
+          <div class="faq-contact">
+            <div class="ic-bubble">
+              <svg
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M21 11.5a8.4 8.4 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.4 8.4 0 01-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.4 8.4 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"
+                />
+              </svg>
+            </div>
+            <h4>You have different questions?</h4>
+            <p>
+              Our team will answer all your questions. We ensure a quick
+              response.
+            </p>
+            <a href="#" class="btn btn-white">Contact Us</a>
+          </div>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="trust-row">
+          <div class="trust-item">
+            <div class="ic">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M21 8L12 3 3 8l9 5 9-5z" />
+                <path d="M3 8v8l9 5 9-5V8M12 13v8" />
+              </svg>
+            </div>
+            <div>
+              <h5>Free Shipping</h5>
+              <p>Free shipping for order above $50</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="ic">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="6" width="20" height="14" rx="2" />
+                <path d="M2 10h20M6 15h4" />
+              </svg>
+            </div>
+            <div>
+              <h5>Flexible Payment</h5>
+              <p>Multiple secure payment options</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="ic">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" />
+              </svg>
+            </div>
+            <div>
+              <h5>24×7 Support</h5>
+              <p>We support online all days.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NEWSLETTER ============ -->
+    <section class="section newsletter">
+      <div class="container">
+        <span class="eyebrow" style="justify-content: center; display: flex"
+          >Our Newsletter</span
+        >
+        <h2>
+          Subscribe to Our Newsletter to Get
+          <span class="gold">Updates on Our Latest Offers</span>
+        </h2>
+        <p>
+          Get 25% off on your first order just by subscribing to our newsletter
+        </p>
+        <form class="newsletter-form" id="newsletterForm">
+          <input
+            type="email"
+            placeholder="Enter Email Address"
+            required
+            aria-label="Email address"
+          />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <div class="cart-drawer" id="cartDrawer" aria-hidden="true">
+      <div class="cart-panel">
+        <div class="cart-head">
+          <h3>Your Cart</h3>
+          <button class="cart-close" id="cartClose" aria-label="Close cart">
+            ×
+          </button>
+        </div>
+        <div id="cartItems"></div>
+        <div class="cart-total">
+          <span>Total</span><strong id="cartTotal">$0.00</strong>
+        </div>
+        <a
+          href="account.html#checkout"
+          class="btn btn-primary"
+          style="width: 100%"
+          >Secure Checkout</a
+        >
+      </div>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#" class="logo"><span class="mark">B</span>Beauty Shop.</a>
+            <p>
+              Discover the latest in beauty and cosmetics. From skincare to makeup,
+              we bring you the best products to enhance your natural beauty.
+            </p>
+            <div class="footer-socials">
+              <a href="#" aria-label="Facebook"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14C17.17 2.1 15.9 2 14.56 2 11.73 2 9.75 3.74 9.75 6.9V9.5H7v4h2.75V22h4.25v-8.5z"
+                  /></svg
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.5-1.3 1.8-2.3-.8.5-1.7.8-2.6 1-.8-.8-1.9-1.3-3.1-1.3-2.3 0-4.2 1.9-4.2 4.2 0 .3 0 .6.1.9-3.5-.2-6.6-1.9-8.7-4.4-.4.6-.6 1.3-.6 2.1 0 1.4.7 2.7 1.9 3.4-.7 0-1.3-.2-1.9-.5v.1c0 2 1.4 3.7 3.3 4.1-.3.1-.7.1-1.1.1-.3 0-.5 0-.8-.1.5 1.7 2.1 2.9 4 2.9-1.5 1.1-3.3 1.8-5.3 1.8-.3 0-.7 0-1-.1 1.9 1.2 4.1 1.9 6.5 1.9 7.8 0 12-6.4 12-12v-.5c.8-.6 1.5-1.3 2-2.1z"
+                  /></svg
+              ></a>
+              <a href="#" aria-label="Pinterest"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 2C6.5 2 2 6.5 2 12c0 4.2 2.6 7.8 6.3 9.3-.1-.8-.2-2 0-2.9.2-.8 1.3-5.5 1.3-5.5s-.3-.7-.3-1.6c0-1.5.9-2.7 2-2.7.9 0 1.4.7 1.4 1.6 0 .9-.6 2.3-.9 3.6-.3 1.1.5 2 1.6 2 1.9 0 3.4-2 3.4-4.9 0-2.6-1.9-4.4-4.5-4.4-3.1 0-4.9 2.3-4.9 4.6 0 .9.4 1.9.8 2.4.1.1.1.2.1.3-.1.4-.3 1.1-.3 1.3 0 .2-.2.2-.4.1-1.4-.6-2.2-2.6-2.2-4.2 0-3.4 2.5-6.6 7.1-6.6 3.7 0 6.6 2.7 6.6 6.2 0 3.7-2.3 6.7-5.6 6.7-1.1 0-2.1-.6-2.5-1.2l-.7 2.6c-.2.9-.9 2.1-1.4 2.8 1 .3 2.1.5 3.3.5 5.5 0 10-4.5 10-10S17.5 2 12 2z"
+                  /></svg
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 2c2.7 0 3.1 0 4.1.1 1.1 0 1.8.2 2.4.4.6.3 1.2.6 1.7 1.1.5.5.9 1 1.1 1.7.2.6.4 1.3.4 2.4.1 1 .1 1.4.1 4.1s0 3.1-.1 4.1c0 1.1-.2 1.8-.4 2.4-.3.6-.6 1.2-1.1 1.7-.5.5-1 .9-1.7 1.1-.6.2-1.3.4-2.4.4-1 .1-1.4.1-4.1.1s-3.1 0-4.1-.1c-1.1 0-1.8-.2-2.4-.4-.6-.3-1.2-.6-1.7-1.1-.5-.5-.9-1-1.1-1.7-.2-.6-.4-1.3-.4-2.4C2 15.1 2 14.7 2 12s0-3.1.1-4.1c0-1.1.2-1.8.4-2.4.3-.6.6-1.2 1.1-1.7.5-.5 1-.9 1.7-1.1.6-.2 1.3-.4 2.4-.4C8.9 2 9.3 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"
+                  /></svg
+              ></a>
+              <a href="#" aria-label="YouTube"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M23 12s0-3.4-.4-5c-.3-.9-1-1.6-1.9-1.9C19 4.7 12 4.7 12 4.7s-7 0-8.7.4c-.9.3-1.6 1-1.9 1.9C1 8.6 1 12 1 12s0 3.4.4 5c.3.9 1 1.6 1.9 1.9 1.7.4 8.7.4 8.7.4s7 0 8.7-.4c.9-.3 1.6-1 1.9-1.9.4-1.6.4-5 .4-5zM9.8 15.3V8.7l5.8 3.3-5.8 3.3z"
+                  /></svg
+              ></a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h5>Company</h5>
+            <ul>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#blog">Blogs</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Career</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Customer Services</h5>
+            <ul>
+              <li><a href="account.html">My Account</a></li>
+              <li><a href="account.html#orders">Track Your Order</a></li>
+              <li><a href="#">Return</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Our Information</h5>
+            <ul>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">User Terms & Condition</a></li>
+              <li><a href="#">Return Policy</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Contact Info</h5>
+            <ul>
+              <li>+91-9837387900</li>
+              <li>prashant020805@gmail.com</li>
+              <li>Hapur, Uttar Pradesh, India</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span class="copyright"
+            >Copyright © 2026 <a href="#">Beauty Shop Website</a>. All Rights
+            Reserved.</span
+          >
+          <span class="locale">English &nbsp;⌄ &nbsp;|&nbsp; USD &nbsp;⌄</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      /* ============ DATA ============ */
+      const categories = [
+        {
+          name: "Skin Care",
+          count: "52 Products",
+          img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=300&auto=format&fit=crop",
+        },
+        {
+          name: "Makeup",
+          count: "48 Products",
+          img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=300&auto=format&fit=crop",
+        },
+        {
+          name: "Hair Care",
+          count: "86 Products",
+          img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=300&auto=format&fit=crop",
+        },
+        {
+          name: "Fragrances",
+          count: "27 Products",
+          img: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=300&auto=format&fit=crop",
+        },
+        {
+          name: "Nail Care",
+          count: "86 Products",
+          img: "https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=300&auto=format&fit=crop",
+        },
+      ];
+      const tickerItems = [
+        "Skin Care",
+        "Makeup",
+        "Hair Care",
+        "Fragrances",
+        "Nail Care",
+        "Body Care",
+      ];
+
+      const bestSellers = [
+        {
+          id: "silksculpt-serum",
+          img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=500&auto=format&fit=crop",
+          cat: "Skin Care",
+          name: "SilkSculpt Serum",
+          rating: "4.9",
+          price: "35.00",
+          old: "70.00",
+          off: "50% off",
+          countdown: true,
+        },
+        {
+          id: "silkskin-serum",
+          img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=500&auto=format&fit=crop",
+          cat: "Skin Care",
+          name: "SilkSkin Serum",
+          rating: "4.8",
+          price: "48.00",
+          old: "60.00",
+          off: "20% off",
+        },
+        {
+          id: "argan-glow",
+          img: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?q=80&w=500&auto=format&fit=crop",
+          cat: "Hair Care",
+          name: "Argan Glow",
+          rating: "5.0",
+          price: "63.00",
+          old: "90.00",
+          off: "30% off",
+        },
+        {
+          id: "argan-gleam",
+          img: "https://images.unsplash.com/photo-1601049676869-702ea24cfd58?q=80&w=500&auto=format&fit=crop",
+          cat: "Body Care",
+          name: "Argan Gleam",
+          rating: "4.7",
+          price: "45.00",
+          old: "60.00",
+          off: "10% off",
+        },
+        {
+          id: "velvet-bloom",
+          img: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=500&auto=format&fit=crop",
+          cat: "Fragrances",
+          name: "Velvet Bloom",
+          rating: "4.9",
+          price: "55.00",
+          old: "80.00",
+          off: "25% off",
+        },
+      ];
+
+      const deals = [
+        {
+          img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=400&auto=format&fit=crop",
+          cat: "Makeup",
+          name: "Smooth Foundation",
+          rating: "5.0",
+          price: "20.00",
+          old: "40.00",
+          off: "50% off",
+        },
+        {
+          img: "https://images.unsplash.com/photo-1601049676869-702ea24cfd58?q=80&w=400&auto=format&fit=crop",
+          cat: "Body Care",
+          name: "Smooth Body Cream",
+          rating: "5.0",
+          price: "30.00",
+          old: "60.00",
+          off: "50% off",
+        },
+      ];
+
+      const arrivals = [
+        {
+          id: "aquaaura-wellness",
+          img: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?q=80&w=400&auto=format&fit=crop",
+          cat: "Body Care",
+          name: "AquaAura Wellness",
+          rating: "4.8",
+          price: "30.00",
+          old: "60.00",
+        },
+        {
+          id: "velvet-rose",
+          img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=400&auto=format&fit=crop",
+          cat: "Makeup",
+          name: "Velvet Rose",
+          rating: "4.9",
+          price: "10.00",
+          old: "20.00",
+        },
+        {
+          id: "herbal-haven",
+          img: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?q=80&w=400&auto=format&fit=crop",
+          cat: "Body Care",
+          name: "Herbal Haven",
+          rating: "5.0",
+          price: "10.00",
+          old: "20.00",
+        },
+        {
+          id: "essence-body-gel",
+          img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=400&auto=format&fit=crop",
+          cat: "Body Care",
+          name: "Essence Body Gel",
+          rating: "4.8",
+          price: "30.00",
+          old: "60.00",
+        },
+        {
+          id: "hydraluxe-serum",
+          img: "https://images.unsplash.com/photo-1620916297397-a4a5402a3c6c?q=80&w=400&auto=format&fit=crop",
+          cat: "Skin Care",
+          name: "HydraLuxe Serum",
+          rating: "4.9",
+          price: "20.00",
+          old: "40.00",
+        },
+        {
+          id: "oceanmist-moisturizer",
+          img: "https://images.unsplash.com/photo-1601049676869-702ea24cfd58?q=80&w=400&auto=format&fit=crop",
+          cat: "Skin Care",
+          name: "OceanMist Moisturizer",
+          rating: "4.8",
+          price: "20.00",
+          old: "40.00",
+        },
+      ];
+
+      const testimonials = [
+        {
+          avatar:
+            "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop",
+          name: "Bessie Cooper",
+          role: "Happy Customer",
+          quote: "The Best Thing I've Used for My Skin!",
+          text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.",
+        },
+        {
+          avatar:
+            "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=150&auto=format&fit=crop",
+          name: "Courtney Henry",
+          role: "Verified Buyer",
+          quote: "My Skin Has Never Felt So Good!",
+          text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis.",
+        },
+        {
+          avatar:
+            "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=150&auto=format&fit=crop",
+          name: "Jenny Wilson",
+          role: "Happy Customer",
+          quote: "A Complete Skincare Game-Changer!",
+          text: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi.",
+        },
+        {
+          avatar:
+            "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=150&auto=format&fit=crop",
+          name: "Leslie Alexander",
+          role: "Verified Buyer",
+          quote: "Glowing Skin In Just Two Weeks!",
+          text: "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.",
+        },
+        {
+          avatar:
+            "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=150&auto=format&fit=crop",
+          name: "Guy Hawkins",
+          role: "Happy Customer",
+          quote: "Worth Every Penny, Highly Recommend!",
+          text: "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+        },
+      ];
+
+      const blogs = [
+        {
+          img: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?q=80&w=500&auto=format&fit=crop",
+          cat: "Skin Care",
+          date: "22 January 2025",
+          title: "Your Ultimate Guide to Healthy, Radiant Skin",
+        },
+        {
+          img: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?q=80&w=500&auto=format&fit=crop",
+          cat: "Body Care",
+          date: "21 January 2025",
+          title: "The Best Body Care Products for Every Skin Type",
+        },
+        {
+          img: "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?q=80&w=500&auto=format&fit=crop",
+          cat: "Skin Care",
+          date: "20 January 2025",
+          title: "Why Sun Protection is Essential for Healthy Skin",
+        },
+      ];
+
+      const instaImgs = [
+        "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?q=80&w=300&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=300&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=500&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?q=80&w=300&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?q=80&w=300&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1552693673-1bf958298935?q=80&w=300&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=300&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=300&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?q=80&w=300&auto=format&fit=crop",
+      ];
+
+      const faqs = [
+        {
+          q: "What types of products do you offer?",
+          a: "We offer a wide range of beauty and cosmetics products including skincare, makeup, hair care, fragrances, nail care, and body care essentials from trusted, quality-focused brands.",
+        },
+        {
+          q: "Do you offer any discounts or promotions?",
+          a: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempor incididunt ut labore...",
+          open: true,
+        },
+        {
+          q: "How can I provide feedback about my experience?",
+          a: "You can share your feedback through our Contact Us page, by emailing our support team, or by leaving a review directly on the product page after purchase.",
+        },
+        {
+          q: "What payment methods do you accept?",
+          a: "We accept all major credit and debit cards, along with several secure digital wallets, so you can check out using whichever method is most convenient for you.",
+        },
+        {
+          q: "Do you offer customer support?",
+          a: "Yes, our support team is available around the clock to help with orders, product questions, and anything else you need.",
+        },
+        {
+          q: "How do I track my order?",
+          a: "Once your order ships, you'll receive a tracking link by email so you can follow its progress right up to delivery.",
+        },
+      ];
+
+      const icons = {
+        heart:
+          '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.4 2 5 5.4 5c2 0 3.4 1.1 4.1 2.2.2.3.7.3.9 0C11.2 6.1 12.6 5 14.6 5 18 5 19.6 8.4 22 11.7 19.5 16.4 12 21 12 21z"/></svg>',
+        expand:
+          '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 00-2 2v3M16 3h3a2 2 0 012 2v3M8 21H5a2 2 0 01-2-2v-3M16 21h3a2 2 0 002-2v-3"/></svg>',
+        cart: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 002 1.6h9.7a2 2 0 002-1.6L23 6H6"/></svg>',
+        star: '<svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L21 9l-5 4.6L17.5 21 12 17.6 6.5 21 8 13.6 3 9l6.1-.7L12 2z"/></svg>',
+        arrow:
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+        insta:
+          '<svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3.1 0 4.1.1 1.1 0 1.8.2 2.4.4.6.3 1.2.6 1.7 1.1.5.5.9 1 1.1 1.7.2.6.4 1.3.4 2.4.1 1 .1 1.4.1 4.1s0 3.1-.1 4.1c0 1.1-.2 1.8-.4 2.4-.3.6-.6 1.2-1.1 1.7-.5.5-1 .9-1.7 1.1-.6.2-1.3.4-2.4.4-1 .1-1.4.1-4.1.1s-3.1 0-4.1-.1c-1.1 0-1.8-.2-2.4-.4-.6-.3-1.2-.6-1.7-1.1-.5-.5-.9-1-1.1-1.7-.2-.6-.4-1.3-.4-2.4C2 15.1 2 14.7 2 12s0-3.1.1-4.1c0-1.1.2-1.8.4-2.4.3-.6.6-1.2 1.1-1.7.5-.5 1-.9 1.7-1.1.6-.2 1.3-.4 2.4-.4C8.9 2 9.3 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>',
+      };
+
+      /* ============ RENDER: TICKER ============ */
+      function renderTicker(el) {
+        if (!el) return;
+        const loopItems = [
+          ...tickerItems,
+          ...tickerItems,
+          ...tickerItems,
+          ...tickerItems,
+        ];
+        el.innerHTML = loopItems
+          .map(
+            (t) =>
+              `<span><svg viewBox="0 0 24 24"><path d="M12 2c2 4 6 5 9 5-1 5-4 9-9 13-5-4-8-8-9-13 3 0 7-1 9-5z"/></svg>${t}</span>`,
+          )
+          .join("");
+      }
+      [
+        "tickerTrack",
+        "tickerTrack2",
+        "tickerTrack3",
+        "tickerTrack4",
+        "tickerTrack5",
+      ].forEach((id) => renderTicker(document.getElementById(id)));
+
+      /* ============ RENDER: CATEGORIES ============ */
+      document.getElementById("catGrid").innerHTML = categories
+        .map(
+          (c) => `
+  <div class="cat-card">
+    <div class="circle"><img src="${c.img}" alt="${c.name} category — cosmetics and beauty products" loading="lazy"></div>
+    <h4>${c.name}</h4>
+    <span>${c.count}</span>
+  </div>
+`,
+        )
+        .join("");
+
+      /* ============ RENDER: PRODUCT CARD HELPER ============ */
+      const shopState = {
+        tab: "All",
+        search: "",
+        price: "all",
+        sort: "featured",
+        wishlist: new Set(),
+        cart: [],
+      };
+      const allProducts = [...bestSellers, ...arrivals];
+
+      function productCard(p) {
+        const saved = shopState.wishlist.has(p.id);
+        return `
+  <div class="product-card reveal-card">
+    <div class="product-thumb">
+      <img src="${p.img}" alt="${p.name} — ${p.cat} product" loading="lazy">
+      <span class="discount-flag">${p.off || "New"}</span>
+      <div class="product-actions">
+        <button class="${saved ? "is-saved" : ""}" data-wishlist="${p.id}" aria-label="Add to wishlist">${icons.heart}</button>
+        <button data-quick="${p.id}" aria-label="Quick view">${icons.expand}</button>
+        <button data-cart="${p.id}" aria-label="Add to cart">${icons.cart}</button>
+      </div>
+      ${
+        p.countdown
+          ? `<div class="product-countdown" data-mini-countdown data-deadline="2026-08-01T00:00:00">
+          <div><b class="d">00</b><span>Days</span></div>
+          <div><b class="h">00</b><span>Hours</span></div>
+          <div><b class="m">00</b><span>Mins</span></div>
+          <div><b class="s">00</b><span>Sec</span></div>
+        </div>`
+          : ""
+      }
+    </div>
+    <div class="product-info">
+      <div class="product-meta">
+        <span>${p.cat}</span>
+        <span class="rating">${icons.star}${p.rating}</span>
+      </div>
+      <h4>${p.name}</h4>
+      <div class="price-row"><span class="price-new">$${p.price}</span><span class="price-old">$${p.old}</span></div>
+    </div>
+  </div>`;
+      }
+
+      /* ============ RENDER: BEST SELLERS + TABS ============ */
+      const tabNames = [
+        "All",
+        "Skin Care",
+        "Make Up",
+        "Hair Care",
+        "Fragrances",
+        "Nail Care",
+        "Body Care",
+        "Accessories & Tools",
+      ];
+      document.getElementById("tabsBestSellers").innerHTML = tabNames
+        .map(
+          (t, i) =>
+            `<button class="tab-btn ${i === 0 ? "active" : ""}" data-tab="${t}">${t}</button>`,
+        )
+        .join("");
+      const bsGrid = document.getElementById("bestSellerGrid");
+      function renderBestSellers(filter) {
+        shopState.tab = filter || shopState.tab;
+        let list =
+          !shopState.tab || shopState.tab === "All"
+            ? allProducts
+            : allProducts.filter(
+                (p) =>
+                  p.cat === shopState.tab ||
+                  (shopState.tab === "Make Up" && p.cat === "Makeup"),
+              );
+        const term = shopState.search.trim().toLowerCase();
+        if (term)
+          list = list.filter((p) =>
+            `${p.name} ${p.cat}`.toLowerCase().includes(term),
+          );
+        if (shopState.price !== "all")
+          list = list.filter((p) => Number(p.price) <= Number(shopState.price));
+        if (shopState.sort === "price-low")
+          list = [...list].sort((a, b) => Number(a.price) - Number(b.price));
+        if (shopState.sort === "price-high")
+          list = [...list].sort((a, b) => Number(b.price) - Number(a.price));
+        if (shopState.sort === "rating")
+          list = [...list].sort((a, b) => Number(b.rating) - Number(a.rating));
+        bsGrid.innerHTML = (list.length ? list : allProducts)
+          .map(productCard)
+          .join("");
+        initMiniCountdowns();
+        if (window.revealCardsReady) observeRevealCards();
+      }
+      renderBestSellers("All");
+      document
+        .getElementById("tabsBestSellers")
+        .addEventListener("click", (e) => {
+          const btn = e.target.closest(".tab-btn");
+          if (!btn) return;
+          document
+            .querySelectorAll("#tabsBestSellers .tab-btn")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          renderBestSellers(btn.dataset.tab);
+        });
+      document
+        .getElementById("catalogSearch")
+        .addEventListener("input", (e) => {
+          shopState.search = e.target.value;
+          renderBestSellers(shopState.tab);
+        });
+      document
+        .getElementById("catalogPrice")
+        .addEventListener("change", (e) => {
+          shopState.price = e.target.value;
+          renderBestSellers(shopState.tab);
+        });
+      document.getElementById("catalogSort").addEventListener("change", (e) => {
+        shopState.sort = e.target.value;
+        renderBestSellers(shopState.tab);
+      });
+
+      /* ============ RENDER: DEALS OF THE DAY ============ */
+      document.getElementById("dealGrid").innerHTML = deals
+        .map(
+          (d) => `
+  <div class="deal-card">
+    <div class="thumb"><img src="${d.img}" alt="${d.name} — deal of the day" loading="lazy"></div>
+    <div class="info">
+      <div class="product-meta" style="margin-bottom:4px;"><span>${d.cat}</span><span class="rating">${icons.star}${d.rating}</span></div>
+      <h4>${d.name}</h4>
+      <div class="price-row"><span class="price-new">$${d.price}</span><span class="price-old">$${d.old}</span></div>
+      <a href="#" class="card-shop-link" style="margin-top:8px;">Shop Now ${icons.arrow}</a>
+    </div>
+  </div>
+`,
+        )
+        .join("");
+
+      /* ============ RENDER: NEW ARRIVALS ============ */
+      document.getElementById("arrivalGrid").innerHTML = arrivals
+        .map(productCard)
+        .join("");
+
+      /* ============ RENDER: BLOG ============ */
+      document.getElementById("blogGrid").innerHTML = blogs
+        .map(
+          (b) => `
+  <div class="blog-card">
+    <div style="position:relative;">
+      <img src="${b.img}" alt="${b.title}" loading="lazy">
+      <span class="blog-tag">${b.cat}</span>
+    </div>
+    <div class="blog-meta"><span>Jenny Alexander</span><span class="dot"></span><span>${b.date}</span></div>
+    <h4>${b.title}</h4>
+    <a href="#" class="read-more">Read More</a>
+  </div>
+`,
+        )
+        .join("");
+
+      /* ============ RENDER: INSTAGRAM GRID ============ */
+      document.getElementById("instaGrid").innerHTML = instaImgs
+        .map(
+          (src, i) => `
+  <a href="#" class="${i === 2 ? "big" : ""}" aria-label="View on Instagram">
+    <img src="${src}" alt="Instagram post — beauty and skincare routine" loading="lazy">
+    <span class="insta-ic">${icons.insta}</span>
+  </a>
+`,
+        )
+        .join("");
+
+      /* ============ RENDER: FAQ ============ */
+      const faqList = document.getElementById("faqList");
+      faqList.innerHTML = faqs
+        .map(
+          (f, i) => `
+  <div class="faq-item ${f.open ? "open" : ""}" data-idx="${i}">
+    <div class="faq-q"><span>${f.q}</span><span class="plus"></span></div>
+    <div class="faq-a" style="${f.open ? "max-height:200px;" : ""}"><p>${f.a}</p></div>
+  </div>
+`,
+        )
+        .join("");
+      faqList.addEventListener("click", (e) => {
+        const item = e.target.closest(".faq-item");
+        if (!item) return;
+        const wasOpen = item.classList.contains("open");
+        faqList.querySelectorAll(".faq-item").forEach((el) => {
+          el.classList.remove("open");
+          el.querySelector(".faq-a").style.maxHeight = null;
+        });
+        if (!wasOpen) {
+          item.classList.add("open");
+          const a = item.querySelector(".faq-a");
+          a.style.maxHeight = a.scrollHeight + "px";
+        }
+      });
+
+      /* ============ RENDER: TESTIMONIALS ============ */
+      const avatarRow = document.getElementById("avatarRow");
+      const testiCard = document.getElementById("testiCard");
+      let testiIdx = 0;
+      function renderAvatars() {
+        avatarRow.innerHTML = testimonials
+          .map(
+            (t, i) =>
+              `<img src="${t.avatar}" class="${i === testiIdx ? "active" : ""}" data-i="${i}" alt="${t.name} avatar">`,
+          )
+          .join("");
+      }
+      function renderTesti() {
+        const t = testimonials[testiIdx];
+        const stars = Array(5).fill(icons.star).join("");
+        testiCard.innerHTML = `
+    <h3>${t.quote}</h3>
+    <p>${t.text}</p>
+    <div class="testi-stars">${stars}<span>5.0</span></div>
+    <p class="testi-name">${t.name}</p>
+    <p class="testi-role">${t.role}</p>
+  `;
+        renderAvatars();
+      }
+      renderTesti();
+      avatarRow.addEventListener("click", (e) => {
+        const img = e.target.closest("img");
+        if (!img) return;
+        testiIdx = +img.dataset.i;
+        renderTesti();
+      });
+      document.getElementById("testiPrev").addEventListener("click", () => {
+        testiIdx = (testiIdx - 1 + testimonials.length) % testimonials.length;
+        renderTesti();
+      });
+      document.getElementById("testiNext").addEventListener("click", () => {
+        testiIdx = (testiIdx + 1) % testimonials.length;
+        renderTesti();
+      });
+
+      /* ============ COUNTDOWN TIMERS ============ */
+      function tickCountdown(container) {
+        const deadline = new Date(container.dataset.deadline).getTime();
+        function update() {
+          const now = Date.now();
+          let diff = deadline - now;
+          if (diff < 0) diff = 0;
+          const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+          const m = Math.floor((diff / (1000 * 60)) % 60);
+          const s = Math.floor((diff / 1000) % 60);
+          const pad = (n) => String(n).padStart(2, "0");
+          const dEl = container.querySelector(".d"),
+            hEl = container.querySelector(".h"),
+            mEl = container.querySelector(".m"),
+            sEl = container.querySelector(".s");
+          if (dEl) dEl.textContent = pad(d);
+          if (hEl) hEl.textContent = pad(h);
+          if (mEl) mEl.textContent = pad(m);
+          if (sEl) sEl.textContent = pad(s);
+        }
+        update();
+        return setInterval(update, 1000);
+      }
+      tickCountdown(document.getElementById("mainCountdown"));
+      function initMiniCountdowns() {
+        document.querySelectorAll("[data-mini-countdown]").forEach((el) => {
+          if (el.dataset.inited) return;
+          el.dataset.inited = "true";
+          tickCountdown(el);
+        });
+      }
+
+      /* ============ MOBILE MENU ============ */
+      const burgerBtn = document.getElementById("burgerBtn");
+      const navLinks = document.querySelector(".nav-links");
+      burgerBtn.addEventListener("click", () => {
+        const isOpen = navLinks.style.display === "flex";
+        navLinks.style.display = isOpen ? "none" : "flex";
+        navLinks.style.cssText += isOpen
+          ? ""
+          : "position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:20px 24px;box-shadow:0 10px 20px rgba(0,0,0,.08);gap:16px;";
+      });
+      burgerBtn.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") burgerBtn.click();
+      });
+
+      /* ============ NEWSLETTER FORM ============ */
+      document
+        .getElementById("newsletterForm")
+        .addEventListener("submit", (e) => {
+          e.preventDefault();
+          const input = e.target.querySelector("input");
+          const btn = e.target.querySelector("button");
+          const original = btn.textContent;
+          btn.textContent = "Subscribed ✓";
+          input.value = "";
+          setTimeout(() => {
+            btn.textContent = original;
+          }, 2500);
+        });
+
+      /* ============ ENHANCEMENTS: WISHLIST / CART / ADMIN / MOTION ============ */
+      const toastEl = document.getElementById("toast");
+      function showToast(message) {
+        toastEl.textContent = message;
+        toastEl.classList.add("show");
+        setTimeout(() => toastEl.classList.remove("show"), 1800);
+      }
+      function findProduct(id) {
+        return allProducts.find((p) => p.id === id) || bestSellers[0];
+      }
+      function renderWishlist() {
+        const list = document.getElementById("wishlistList");
+        const items = [...shopState.wishlist].map(findProduct);
+        document.getElementById("wishCount").textContent = items.length;
+        if (!list) return;
+        list.innerHTML = items.length
+          ? items
+              .map(
+                (p) => `
+    <div class="mini-list-item">
+      <img src="${p.img}" alt="${p.name}">
+      <div><strong>${p.name}</strong><br><small>${p.cat} · $${p.price}</small></div>
+    </div>
+  `,
+              )
+              .join("")
+          : '<span class="empty">No saved products yet. Tap any heart icon to save one.</span>';
+      }
+      function renderCart() {
+        const cartItems = document.getElementById("cartItems");
+        const subtotal = shopState.cart.reduce(
+          (sum, item) => sum + Number(findProduct(item.id).price) * item.qty,
+          0,
+        );
+        document.getElementById("cartCount").textContent =
+          shopState.cart.reduce((sum, item) => sum + item.qty, 0);
+        document.getElementById("cartTotal").textContent =
+          `$${subtotal.toFixed(2)}`;
+        cartItems.innerHTML = shopState.cart.length
+          ? shopState.cart
+              .map((item) => {
+                const p = findProduct(item.id);
+                return `<div class="cart-item">
+      <img src="${p.img}" alt="${p.name}">
+      <div><h4>${p.name}</h4><small>$${p.price} · Qty ${item.qty}</small></div>
+      <button class="cart-close" data-remove-cart="${p.id}" aria-label="Remove ${p.name}">×</button>
+    </div>`;
+              })
+              .join("")
+          : '<p style="color:var(--ink-soft);">Your cart is empty. Add a product to begin checkout.</p>';
+      }
+      function addToCart(id) {
+        const item = shopState.cart.find((i) => i.id === id);
+        if (item) item.qty += 1;
+        else shopState.cart.push({ id, qty: 1 });
+        renderCart();
+        document.getElementById("cartDrawer").classList.add("open");
+        showToast("Added to cart");
+      }
+      document.addEventListener("click", (e) => {
+        const wish = e.target.closest("[data-wishlist]");
+        if (wish) {
+          const id = wish.dataset.wishlist;
+          shopState.wishlist.has(id)
+            ? shopState.wishlist.delete(id)
+            : shopState.wishlist.add(id);
+          renderWishlist();
+          renderBestSellers(shopState.tab);
+          document.getElementById("arrivalGrid").innerHTML = arrivals
+            .map(productCard)
+            .join("");
+          observeRevealCards();
+          showToast("Wishlist updated");
+        }
+        const cart = e.target.closest("[data-cart]");
+        if (cart) addToCart(cart.dataset.cart);
+        const quick = e.target.closest("[data-quick]");
+        if (quick)
+          showToast(
+            `${findProduct(quick.dataset.quick).name} quick view ready for product page integration`,
+          );
+        const remove = e.target.closest("[data-remove-cart]");
+        if (remove) {
+          shopState.cart = shopState.cart.filter(
+            (item) => item.id !== remove.dataset.removeCart,
+          );
+          renderCart();
+        }
+      });
+      document
+        .getElementById("cartNav")
+        .addEventListener("click", () =>
+          document.getElementById("cartDrawer").classList.add("open"),
+        );
+      document
+        .getElementById("cartClose")
+        .addEventListener("click", () =>
+          document.getElementById("cartDrawer").classList.remove("open"),
+        );
+      document.getElementById("cartDrawer").addEventListener("click", (e) => {
+        if (e.target.id === "cartDrawer")
+          e.currentTarget.classList.remove("open");
+      });
+      document.getElementById("wishlistNav").addEventListener("click", () => {
+        window.location.href = "account.html#wishlist";
+      });
+      document.getElementById("accountNav").addEventListener("click", () => {
+        window.location.href = "account.html";
+      });
+
+      const adminAreas = {
+        "Products & Categories": [
+          "Create product",
+          "Category skincare",
+          "Published",
+        ],
+        Inventory: ["Low stock alerts", "Warehouse sync", "Needs review"],
+        "Orders & Customers": [
+          "Order #BS-1048",
+          "VIP customer segment",
+          "Active",
+        ],
+        "Coupons & Discounts": ["GLOW20", "First order offer", "Active"],
+        "CMS & Blog": ["Homepage story", "SEO article draft", "Draft"],
+        "Banners & Homepage": ["Summer glow hero", "Promo strip", "Scheduled"],
+        Reports: ["Monthly sales", "Channel report", "Ready"],
+        Settings: ["Payment gateway", "Shipping tax delivery", "Configured"],
+        Notifications: ["Back-in-stock email", "Admin alerts", "Active"],
+      };
+      const adminMenu = document.getElementById("adminMenu");
+      if (adminMenu)
+        adminMenu.innerHTML = Object.keys(adminAreas)
+          .map(
+            (name, i) =>
+              `<button class="${i === 0 ? "active" : ""}" data-admin-tab="${name}">${name}</button>`,
+          )
+          .join("");
+      function renderAdminRows(name) {
+        const data = adminAreas[name] || adminAreas["Products & Categories"];
+        document.getElementById("adminTitle").textContent = name;
+        document.getElementById("adminDesc").textContent =
+          `${name} workflow with role-based access, audit-friendly actions, and CRUD-ready controls.`;
+        document.getElementById("adminRows").innerHTML = `
+    <tr><td>${data[0]}</td><td>Management</td><td><span class="status-pill">${data[2]}</span></td><td><button class="tab-btn">Edit</button></td></tr>
+    <tr><td>${data[1]}</td><td>Configuration</td><td><span class="status-pill">Enabled</span></td><td><button class="tab-btn">View</button></td></tr>
+    <tr><td>${name} policy</td><td>RBAC</td><td><span class="status-pill">Secure</span></td><td><button class="tab-btn">Manage</button></td></tr>
+  `;
+      }
+      if (adminMenu)
+        adminMenu.addEventListener("click", (e) => {
+          const btn = e.target.closest("[data-admin-tab]");
+          if (!btn) return;
+          adminMenu
+            .querySelectorAll("button")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          renderAdminRows(btn.dataset.adminTab);
+        });
+      if (adminMenu) renderAdminRows("Products & Categories");
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 },
+      );
+      function observeRevealCards() {
+        document
+          .querySelectorAll(
+            ".product-card,.deal-card,.blog-card,.cat-card,.customer-card,.admin-card",
+          )
+          .forEach((el) => {
+            el.classList.add("reveal-card");
+            revealObserver.observe(el);
+          });
+      }
+      renderWishlist();
+      renderCart();
+      window.revealCardsReady = true;
+      observeRevealCards();
+    </script>
+  </body>
+</html>
