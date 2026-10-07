@@ -5,7 +5,7 @@ CSS, and JavaScript. The project includes a customer-facing
 shopping interface, account page, wishlist, order tracking,
 checkout UI, and an admin dashboard.
 
-It is just a ui only developed through html, css and javascript.
+It's only just a ui developed through html, css and javascript.
 
 ## Technologies Used:
 
